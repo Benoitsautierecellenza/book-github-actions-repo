@@ -1,0 +1,17 @@
+name: 'Trigger - exercice 1'
+on:
+  schedule:
+  - cron: "30 19 * * 1-5"
+  
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: 'This issue is stale because is has been open 30 days with no activity. remove stale label or comment or this will be closed in 5 days.'
+          days-before-stale: 30
+          days-before-close: 5
+          
